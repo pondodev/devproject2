@@ -1,0 +1,59 @@
+<?php
+    //error logging
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors',1);
+    error_reporting(E_ALL);
+    if(isset($_POST["product_code"]) && isset($_POST["name"]) && isset($_POST["date_added"]) && isset($_POST["quantity_on_hand"]) && isset($_POST["price"]) && isset($_POST["comment"]))
+        Process($_POST["product_code"],$_POST["name"],$_POST["date_added"],$_POST["quantity_on_hand"],$_POST["price"],$_POST["comment"]);
+
+    function Process($product_code,$name,$date_added,$quantity_on_hand,$price,$comment)
+    {
+        if($product_code == "" && $name == "" && $date_added == "" && $quantity_on_hand == "" && $price == "" && $comment == "")
+        {
+            echo "Please fill out the details";
+            return;
+        }
+        elseif($product_code == "")
+        {
+            echo "Please enter a product code";
+            return;
+        }
+        elseif($name == "")
+        {
+            echo "Please enter a name";
+            return;
+        }
+        elseif($date_added == "")
+        {
+            echo "Please enter a date added";
+            return;
+        }
+        elseif($quantity_on_hand == "")
+        {
+            echo "Please enter a quantity";
+            return;
+        }
+        elseif($price == "")
+        {
+            echo "Please enter a price";
+            return;
+        }
+
+        
+        include "dbconnect.php";
+        $conn = new mysqli($server, $username, $password, $schema);
+
+        if($conn->connect_error)
+        {
+            echo "error connecting to db";
+        }
+
+        $query = "INSERT INTO 'products' (product_code,name,date_added,quantity_on_hand,price,comment) VALUES
+        ('$product_code','$name','$date_added','$date_added','$quantity_on_hand','$price','$comment')
+        ";
+
+        $conn->query($query);
+        $result = $conn->query($query);
+        $conn->close();
+    }
+?>
