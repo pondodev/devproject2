@@ -4,6 +4,10 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     include "dbconnect.php";
+    $query = "CREATE TABLE IF NOT EXISTS `mydb`.`users` (
+        user_name VARCHAR(30) NOT NULL,
+        user_password VARCHAR(30) NOT NULL";
+    $conn->query($query);
     $query = "CREATE TABLE IF NOT EXISTS `mydb`.`products` (
         `product_id` INT NOT NULL AUTO_INCREMENT,
         `product_code` CHAR(3) NOT NULL,
@@ -26,4 +30,3 @@
         echo "<tr><td>" . $row['product_code'] . "</td><td>" .  $row['name'] . "</td><td>" .  $row['quantity_on_hand'] . "</td><td>" .  $row['price'] . "</td></tr>";
     }
     echo "</table>";
-?>
