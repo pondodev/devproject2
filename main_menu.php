@@ -17,11 +17,11 @@
         -->
         <header>
         <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
-            <a class="active" href="#main">Home</a>
-            <a href="#login">Login</a>
-            <a href="#addproducts">Add Products</a>
-            <a href="#showproducts">Show Proucts</a>
-            <a href="#editproducts">Edit Products</a>
+            <a class="active" href="main_menu.php">Home</a>
+            <a href="login.php">Login</a>
+            <a href="add_products.php">Add Products</a>
+            <a href="show_products.php">Show Proucts</a>
+            <a href="edit_products.php">Edit Products</a>
         </nav>
         </header>
         <body>
