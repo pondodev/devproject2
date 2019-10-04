@@ -2,20 +2,20 @@
     if (isset($_POST["username"]) && isset($_POST["password"]))
         Process($_POST["username"], $_POST["password"]);
 
-    function Process($username, $password)
+    function Process($uname, $pwd)
     {
         // check if the user has entered a username and password
-        if ($username == "" && $password == "")
+        if ($uname == "" && $pwd == "")
         {
             echo "please enter a username and password";
             return;
         }
-        elseif ($username == "")
+        elseif ($uname == "")
         {
             echo "please enter a username";
             return;
         }
-        elseif ($password == "")
+        elseif ($pwd == "")
         {
             echo "please enter a password";
             return;
@@ -30,7 +30,7 @@
             echo "error connecting to the db";
         }
 
-        $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+        $query = "SELECT * FROM users WHERE user_name = '$uname' AND user_password = '$pwd'";
         if ($conn->query($query)->num_rows == 1) // we have a valid user
             header("Location:main_menu.php");
         else // user has not been found
