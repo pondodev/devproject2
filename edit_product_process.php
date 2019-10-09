@@ -1,6 +1,8 @@
 <?php
     if (isset($_POST["prodname"]))
         Process($_POST["prodname"]);
+    if (isset($_GET["status"]))
+        echo "<p>successfully updated item</p>";
 
     function Process($prodname)
     {
