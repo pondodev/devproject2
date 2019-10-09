@@ -15,19 +15,11 @@
 
             TODO: implement CSS
         -->
-        <header>
-        <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
-            <a class="active" href="main_menu.php">Home</a>
-            <a href="login.php">Login</a>
-            <a href="add_products.php">Add Products</a>
-            <a href="show_products.php">Show Proucts</a>
-            <a href="edit_products.php">Edit Products</a>
-        </nav>
-        </header>
+        <?php include "header.php" ?>
         <body>
             <main class="container lead">
                 <div class="row">
-                    <h1 class="displat-1">Sales Reporting and Prediction System</h1>
+                    <h1 class="display-1">Sales Reporting and Prediction System</h1>
                 </div>
 
                 <div class="row">

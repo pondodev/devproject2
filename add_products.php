@@ -15,15 +15,7 @@
 
             TODO: implement CSS
         -->
-        <header>
-        <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
-            <a href="main_menu.php">Home</a>
-            <a href="login.php">Login</a>
-            <a class="active" href="add_products.php">Add Products</a>
-            <a href="show_products.php">Show Proucts</a>
-            <a href="edit_products.php">Edit Products</a>
-        </nav>
-        </header>
+        <?php include "header.php" ?>
         <body>
             <main class="container lead">
                 <div class="row">
