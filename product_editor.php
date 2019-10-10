@@ -5,11 +5,7 @@
 </head>
 
 <body>
-    <?php
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors',1);
-        error_reporting(E_ALL);
-    ?>
+    <?php include "header.php" ?>
     <h1>Edit a Product</h1>
     <?php include "product_editor_process.php"; ?>
 </body>

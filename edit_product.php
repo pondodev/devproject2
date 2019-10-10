@@ -5,6 +5,7 @@
 </head>
 
 <body>
+    <?php include "header.php" ?>
     <h1>Edit a Product</h1>
     <form action="edit_product.php" method="post">
         <label for="prodname">Product Name: </label>

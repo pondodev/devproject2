@@ -3,10 +3,10 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors',1);
     error_reporting(E_ALL);
-    if(isset($_POST["product_code"]) && isset($_POST["name"]) && isset($_POST["date_added"]) && isset($_POST["quantity_on_hand"]) && isset($_POST["price"]) && isset($_POST["comment"]))
-        Process($_POST["product_code"],$_POST["name"],$_POST["date_added"],$_POST["quantity_on_hand"],$_POST["price"],$_POST["comment"]);
+    if(isset($_POST["product_code"]) && isset($_POST["name"]) && isset($_POST["quantity_on_hand"]) && isset($_POST["price"]) && isset($_POST["comment"]))
+        Process($_POST["product_code"],$_POST["name"],$_POST["quantity_on_hand"],$_POST["price"],$_POST["comment"]);
 
-    function Process($product_code,$name,$date_added,$quantity_on_hand,$price,$comment)
+    function Process($product_code,$name,$quantity_on_hand,$price,$comment)
     {
         if($product_code == "" && $name == "" && $date_added == "" && $quantity_on_hand == "" && $price == "" && $comment == "")
         {
@@ -21,11 +21,6 @@
         elseif($name == "")
         {
             echo "Please enter a name";
-            return;
-        }
-        elseif($date_added == "")
-        {
-            echo "Please enter a date added";
             return;
         }
         elseif($quantity_on_hand == "")
@@ -48,12 +43,11 @@
             echo "error connecting to db";
         }
 
-        $query = "INSERT INTO 'products' (product_code,name,date_added,quantity_on_hand,price,comment) VALUES
-        ('$product_code','$name','$date_added','$date_added','$quantity_on_hand','$price','$comment')
+        $query = "INSERT INTO products (product_code,name,date_added,quantity_on_hand,price,comment) VALUES
+        ('$product_code','$name',CURRENT_DATE,$quantity_on_hand,$price,'$comment')
         ";
 
         $conn->query($query);
-        $result = $conn->query($query);
         $conn->close();
     }
 ?>

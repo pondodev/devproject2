@@ -30,9 +30,6 @@
                         <label for="name">Name: </label>
                         <input type="text" name="name" id="name"/><br />
 
-                        <label for="date_added">Date Added: </label>
-                        <input type="text" name="date_added" id="date_added"/><br />
-
                         <label for="quantity_on_hand">Quantity on hand: </label>
                         <input type="text" name="quantity_on_hand" id="quantity_on_hand"/><br />
 
@@ -41,7 +38,7 @@
 
                         <label for="comment">Comment: </label>
                         <input type="text" name="comment" id="comment"/><br />
-                        <input type="submit" value="Login" />
+                        <input type="submit" value="Add Product" />
                     </form>
                 </div>
                 <div id="debug">
