@@ -3,6 +3,7 @@
         <head>
             <title>Sales Reporting</title>
             <meta charset="utf-8">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <meta name="author" content="James Hassall, Daniel Coady, Jake Beltrami, Gareth Clauson">
             <meta name="description" content="Sales reporting software">
@@ -13,7 +14,6 @@
             Home is always going to be active on this page
             and highlight which page the user is on
 
-            TODO: implement CSS
         -->
         <?php include "header.php" ?>
         <body>
