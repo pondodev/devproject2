@@ -1,9 +1,12 @@
 <?php
+include "validation.php";
     if (isset($_POST["username"]) && isset($_POST["password"]))
         Process($_POST["username"], $_POST["password"]);
 
     function Process($uname, $pwd)
     {
+        $uname = sanitise($uname);
+        $pwd = sanitise($pwd);
         // check if the user has entered a username and password
         if ($uname == "" && $pwd == "")
         {

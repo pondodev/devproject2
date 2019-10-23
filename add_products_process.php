@@ -1,4 +1,5 @@
 <?php
+include "validation.php";
     //error logging
     ini_set('display_errors', 1);
     ini_set('display_startup_errors',1);
@@ -33,21 +34,25 @@
             echo "Please enter a price";
             return;
         }
-
+        // validation
         
-        include "dbconnect.php";
-        $conn = new mysqli($server, $username, $password, $schema);
-
-        if($conn->connect_error)
-        {
-            echo "error connecting to db";
+        if(validate($product_code,"numeric",3,8) && validate($name,"alphanumeric",1,30) && validate($quantity_on_hand,"numeric",1,5) && validate($price,"price",3,10)){
+            include "dbconnect.php";
+            $conn = new mysqli($server, $username, $password, $schema);
+    
+            if($conn->connect_error)
+            {
+                echo "error connecting to db";
+            }
+    
+            $query = "INSERT INTO products (product_code,name,date_added,quantity_on_hand,price,comment) VALUES
+            ('$product_code','$name',CURRENT_DATE,$quantity_on_hand,$price,'$comment')
+            ";
+    
+            $conn->query($query);
+            $conn->close();
+        }else{
+            echo "Validation failed. Please double check inputs";
         }
-
-        $query = "INSERT INTO products (product_code,name,date_added,quantity_on_hand,price,comment) VALUES
-        ('$product_code','$name',CURRENT_DATE,$quantity_on_hand,$price,'$comment')
-        ";
-
-        $conn->query($query);
-        $conn->close();
+        
     }
-?>
