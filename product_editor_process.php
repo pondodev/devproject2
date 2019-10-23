@@ -1,13 +1,19 @@
 <?php
-    if (isset($_GET["id"]))
+    if (isset($_GET["id"])){
         GETProcess($_GET["id"]);
-    elseif (isset($_POST["product_id"], $_POST["product_code"], $_POST["name"], $_POST["quantity_on_hand"], $_POST["price"])) // we POST when we actually make the edit
-        POSTProcess($_POST["product_id"], $_POST["product_code"], $_POST["name"], $_POST["quantity_on_hand"], $_POST["price"]);
-    else
+    }elseif (isset($_POST["product_id"], $_POST["product_code"], $_POST["name"], $_POST["quantity_on_hand"], $_POST["price"])) {
+        if(validate($_POST["product_id"],"numeric",3,8) && validate($_POST["product_code"],"alphanumeric",1,30) && validate($_POST["name"],"numeric",1,5) && validate($_POST["price"],"price",3,10)){
+            POSTProcess($_POST["product_id"], $_POST["product_code"], $_POST["name"], $_POST["quantity_on_hand"], $_POST["price"]);
+        }else{
+            echo "Please ensure updated values are correct";
+        }
+    }// we POST when we actually make the edit
+    else{
         GoBack();
+    }
 
     function GETProcess($id)
-    {
+    {   
         $query = "SELECT * FROM products WHERE product_id=$id";
         include "dbconnect.php"; // used so that we can connect to the db
         $conn = new mysqli($server, $username, $password, $schema);
@@ -72,4 +78,3 @@
         echo '    <input type="submit" value="Save" />';
         echo '</form>';
     }
-?>    
