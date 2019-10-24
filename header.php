@@ -5,6 +5,7 @@
             <li class="nav-item"><a href="add_products.php" class="nav-link">Add Products</a></li>
             <li class="nav-item"><a href="show_products.php" class="nav-link">Show Products</a></li>
             <li class="nav-item"><a href="edit_product.php" class="nav-link">Edit Products</a></li>
+			 <li class="nav-item"><a href="reports.php" class="nav-link">Reports</a></li>
         </ul>
     </nav>
 </header>
