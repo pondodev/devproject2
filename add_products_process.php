@@ -54,5 +54,19 @@ include "validation.php";
         }else{
             echo "Validation failed. Please double check inputs";
         }
-        
+
+        $query = "INSERT INTO products (product_code,name,date_added,quantity_on_hand,price,comment) VALUES
+        ('$product_code','$name',CURRENT_DATE,$quantity_on_hand,$price,'$comment')
+        ";
+
+        $conn->query($query);
+
+		// Add product to the transactions database
+		$query = "INSERT INTO transactions (product_code,quantity,date) VALUES
+        ('$product_code',$quantity_on_hand,CURRENT_DATE)
+        ";
+
+        $conn->query($query);
+
+        $conn->close();
     }

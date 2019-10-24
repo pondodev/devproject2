@@ -45,6 +45,20 @@
             echo "error connecting to the db";
         }
 
+		// Track the edit in the transactions database
+		// Calculate the difference in quantity
+		$query = "SELECT quantity_on_hand FROM products WHERE product_code='$product_code'";
+		$result = $conn->query($query);
+		$quantity = $result->fetch_assoc();
+		$difference = $quantity_on_hand - $quantity["quantity_on_hand"];
+
+		// Add the new transaction record
+		$query = "INSERT INTO transactions (product_code,quantity,date) VALUES
+        ('$product_code',$difference,CURRENT_DATE)
+        ";
+
+        $conn->query($query);
+
         // now we add the data to the db
         $query = "UPDATE products SET ";
         $query .= "product_code='$product_code',";
@@ -54,6 +68,7 @@
         $query .= "WHERE product_id=$id";
 
         $conn->query($query);
+
         header("Location:edit_product.php?status=success");
     }
 
