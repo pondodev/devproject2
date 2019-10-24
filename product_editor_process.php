@@ -41,7 +41,7 @@
 
 		// Track the edit in the transactions database
 		// Calculate the difference in quantity
-		$query = "SELECT * FROM products WHERE product_code=$product_code";
+		$query = "SELECT quantity_on_hand FROM products WHERE product_code='$product_code'";
 		$result = $conn->query($query);
 		$quantity = $result->fetch_assoc();
 		$difference = $quantity_on_hand - $quantity["quantity_on_hand"];
