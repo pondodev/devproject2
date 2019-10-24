@@ -43,8 +43,8 @@
 		// Calculate the difference in quantity
 		$query = "SELECT quantity_on_hand FROM products WHERE product_code=$product_code";
 		$result = $conn->query($query);
-		$quantity = mysqli_fetch_object($result);
-		$difference = $quantity_on_hand - $quantity->quantity_on_hand;
+		$quantity = $result->fetch_assoc();
+		$difference = $quantity_on_hand - $quantity["quantity_on_hand"];
 
 		// Add the new transaction record
 		$query = "INSERT INTO transactions (product_code,quantity,date) VALUES
